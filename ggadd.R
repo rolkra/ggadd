@@ -15,7 +15,7 @@ ggadd_geom <- function(plot, geom, ...)  {
   if (geom == "area") {plot + geom_area(...) -> plot}
   if (geom == "hist") {plot + geom_hist(...) -> plot}
   if (geom == "density") {plot + geom_density(...) -> plot}
-  if (geom == "bar") {plot + geom_density(...) -> plot}
+  if (geom == "bar") {plot + geom_bar(...) -> plot}
   if (geom == "col") {plot + geom_col(...) -> plot}
   if (geom == "boxplot") {plot + geom_boxplot(...) -> plot}
   if (geom == "smooth") {plot + geom_smooth(...) -> plot}  
@@ -47,7 +47,7 @@ ggadd_title <- function(plot, title, center = FALSE, color, size, bold = FALSE) 
 
 ggadd_subtitle <- function(plot, subtitle, center = FALSE, color, size, bold = FALSE)  {
 
-    plot + labs(subtitle = subtitle) -> plot
+  plot + labs(subtitle = subtitle) -> plot
   
   if (!missing(color)) {
     plot + theme(plot.subtitle = element_text(colour = color)) -> plot
@@ -164,14 +164,13 @@ iris %>%
   ggadd_geom("point", alpha = 0.50) %>% 
   ggadd_title("Iris", color = "grey", size = 20, center = TRUE, bold = TRUE) %>% 
   ggadd_subtitle("Blumen Daten", color = "grey", size = 20, center = TRUE, bold = TRUE) %>% 
-  ggadd_caption("Figure 1.10", bold = TRUE) %>% 
+  ggadd_caption("Figure 1.10", color = "green", size = 20, bold = TRUE) %>% 
   ggadd_x(lab = "Sepal Length", color = "blue", lim = c(4,5)) %>% 
-  ggadd_y(lab = "Sepal Width", color = "pink", lim = c(0,5)) %>% 
+  ggadd_y(lab = "Sepal Width", color = "blue", lim = c(0,5)) %>% 
   ggadd_legend(show = TRUE, position = "right", title_color = "Blumenart", title_size = "Huhu") %>% 
   ggadd_line(yintercept = 4.5, dashed = FALSE, color = "red", size = 1) %>% 
   ggadd_text(4.5, 4.5, "nicht weiter nach oben", color = "black", size = 4) %>% 
   ggadd_facet(~Species) %>% 
   ggadd_flip()
    
-
 
